@@ -27,7 +27,7 @@ RSpec.describe "#signUp mutation" do
   it "is successful with correct data" do
     name = FFaker::Name.name
     email = FFaker::Internet.email
-    result = GraphqlFromScratchSchema.execute(mutation, variables: {
+    result = GraphQLFromScratchSchema.execute(mutation, variables: {
       name: name,
       email: email,
       password: SecureRandom.hex
@@ -42,7 +42,7 @@ RSpec.describe "#signUp mutation" do
 
   it "fails in case of wrong email format" do
     wrong_email = "test.user"
-    result = GraphqlFromScratchSchema.execute(mutation, variables: {
+    result = GraphQLFromScratchSchema.execute(mutation, variables: {
       name: FFaker::Name.name,
       email: wrong_email,
       password: SecureRandom.hex
@@ -55,7 +55,7 @@ RSpec.describe "#signUp mutation" do
   end
 
   it "fails in case of no password" do
-    result = GraphqlFromScratchSchema.execute(mutation, variables: {
+    result = GraphQLFromScratchSchema.execute(mutation, variables: {
       name: FFaker::Name.name,
       email: FFaker::Internet.email,
       password: ""

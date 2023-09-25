@@ -25,5 +25,11 @@ module Types
     def test_field
       "Hello World!"
     end
+
+    field :who_am_i, String, null: false,
+      description: "Who am I"
+    def who_am_i
+      "You've authenticated as #{context[:current_user].presence || "guest"}."
+    end    
   end
 end
